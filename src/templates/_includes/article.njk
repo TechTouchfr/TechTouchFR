@@ -1,0 +1,11 @@
+<article>
+  <h1>{{ page.title }}</h1>
+  {% if page.date %}
+    <time datetime="{{ page.date | date('YYYY-MM-DD') }}">{{ page.date | date('MMMM D, YYYY') }}</time>
+  {% else %}
+    <span>Date indisponible</span>
+  {% endif %}
+  <img src="{{ page.image }}" alt="{{ page.description }}" loading="lazy">
+  <div>{{ content | safe }}</div>
+  {% include "poll.njk" %}
+</article>

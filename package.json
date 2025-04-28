@@ -1,0 +1,40 @@
+{
+  "name": "techtouch",
+  "version": "3.0.0",
+  "description": "TechTouch — Blog tech sur l'IA, le cloud, les technologies émergentes.",
+  "engines": {
+    "node": ">=20.0.0"
+  },
+  "scripts": {
+    "clean": "rimraf public",
+    "css:build": "postcss src/css/styles.css -o public/css/styles.css",
+    "css:watch": "postcss src/css/styles.css -o public/css/styles.css --watch",
+    "dev": "concurrently \"npm run css:watch\" \"npm run serve\"",
+    "serve": "eleventy --serve",
+    "build": "npm run clean && npm run css:build && eleventy",
+    "deploy": "npm run build",
+    "optimize:images": "node scripts/optimize-images.js",
+    "check:articles": "node scripts/article-check.js",
+    "lint": "eslint src --ext .js,.njk --max-warnings=0 && prettier --check ."
+  },
+  "browserslist": [
+    ">0.5%",
+    "last 2 versions",
+    "not dead",
+    "not op_mini all"
+  ],
+  "devDependencies": {
+    "@11ty/eleventy": "^3.0.0",
+    "@11ty/eleventy-plugin-rss": "^1.2.0",
+    "@quasibit/eleventy-plugin-sitemap": "^2.2.0",
+    "autoprefixer": "^10.4.20",
+    "concurrently": "^9.1.2",
+    "eslint": "^9.14.0",
+    "gray-matter": "^2.1.1",
+    "postcss": "^8.4.47",
+    "postcss-cli": "^11.0.0",
+    "prettier": "^3.3.3",
+    "sharp": "^0.33.5",
+    "tailwindcss": "^3.4.14"
+  }
+}

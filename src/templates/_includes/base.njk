@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>{{ page.data.title }} | {{ site.title }}</title>
+  <meta name="description" content="{{ page.data.description | default(site.description) }}">
+  <meta property="og:title" content="{{ page.data.title }}">
+  <meta property="og:description" content="{{ page.data.description | default(site.description) }}">
+  <meta property="og:url" content="{{ site.url }}{{ page.url }}">
+  <link rel="canonical" href="{{ site.url }}{{ page.url }}">
+  <link rel="stylesheet" href="/css/styles.css">
+  <link rel="manifest" href="/site.webmanifest">
+</head>
+<body>
+  <a href="#main" class="sr-only">Skip to main content</a>
+  {% include "header.njk" %}
+  <main id="main">{{ content | safe }}</main>
+  {% include "footer.njk" %}
+</body>
+</html>
