@@ -1,10 +1,11 @@
 ---
 layout: "base.njk"
-title: "Accueil"
-description: "{{ site.description }}"
+title: "Tous les articles"
+description: "Liste de tous les articles sur TechTouch"
+permalink: "/content/articles/"
 ---
 
-<h1>Articles récents</h1>
+<h1>Tous les articles</h1>
 <ul>
   {% set articles = collections.all | filterByLayout("article.njk") %}
   {% if articles and articles.length > 0 %}

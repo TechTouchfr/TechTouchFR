@@ -1,5 +1,6 @@
 const pluginRss = require("@11ty/eleventy-plugin-rss");
 const pluginSitemap = require("@quasibit/eleventy-plugin-sitemap");
+const { DateTime } = require("luxon"); // Import Luxon for date handling
 
 module.exports = function (eleventyConfig) {
   // Add plugins
@@ -22,9 +23,16 @@ module.exports = function (eleventyConfig) {
     return content;
   });
 
-  // Add a filter to filter collections by layout
+  // Add filterByLayout filter (already present)
   eleventyConfig.addFilter("filterByLayout", (collection, layout) => {
     return collection.filter(item => item.data.layout === layout);
+  });
+
+  // Add date filter for Nunjucks
+  eleventyConfig.addFilter("date", (dateObj, format) => {
+    if (!dateObj) return "";
+    const dt = DateTime.fromJSDate(dateObj);
+    return dt.toFormat(format);
   });
 
   return {
